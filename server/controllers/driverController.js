@@ -66,12 +66,11 @@ const updateDriver = (req, res) => {
         email = '${req.body.email}',
         phone = '${req.body.phone}',
         password = '${req.body.password}',
-        password = '${req.body.license_id}',
-        password = '${req.body.availability}',
+        license_id = '${req.body.license_id}',
+        availability = '${req.body.availability}',
         updated_at = '${updatedAt}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
-        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })

@@ -9,7 +9,7 @@ function Details() {
   var initialDriver = {
     name: "",
     license_id: "",
-    availability: true,
+    availability: 1,
     email: "",
     phone: "",
     password: "",
@@ -19,9 +19,17 @@ function Details() {
   useEffect(() => {
     new API_Driver().getAllDrivers().then(data => {
       const driver = data.find(d => d.id.toString() === userId);
+      console.log(">>", driver);
       setDriver(driver);
     })
-  }, [])
+  }, [driver])
+
+  const handleAvailability = (status) => {
+    driver.availability = status;
+    new API_Driver().updateDriver(driver).then(data => {
+      setDriver(driver);
+    })
+  }
 
   return (
     <div className="driver-details-page row">
@@ -45,14 +53,14 @@ function Details() {
           <td>{driver.license_id}</td>
         </tr>
         <tr>
-          <td>Availability (Currently { driver.availability ? "Available" : "Busy"})</td>
+          <td>Availability (Currently { driver.availability === 1 ? "Available" : "Busy"})</td>
           <td>
           {
-            driver.availability 
+            driver.availability === 1
             ? 
-            <button>Set as Busy</button>
+            <button onClick={(e) => handleAvailability(0)}>Set as Busy</button>
             :
-            <button>Set as Available</button>
+            <button onClick={(e) => handleAvailability(1)}>Set as Available</button>
           }
           </td>
         </tr>
