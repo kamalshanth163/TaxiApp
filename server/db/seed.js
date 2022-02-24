@@ -1,4 +1,5 @@
 const sqlCon = require("./connection");
+const DateTimeService = require('../services/DateTimeService');
 
 class Seed {
 
@@ -8,18 +9,26 @@ class Seed {
     }
 
     insertAdmins() {
-        var insertAdmin = 
-        `INSERT INTO employees (name, department, role, email, phone, password)
-        SELECT "Owner", "Administration", "Admin", "admin@gmail.com", "0811234567", "admin123"
+        var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
+        sqlCon.query(
+        `
+        INSERT INTO admins (name, phone, email, password, created_at)
+        SELECT ?,?,?,?,?
         FROM DUAL
         WHERE NOT EXISTS(
             SELECT 1
-            FROM employees
-            WHERE role = 'Admin'
+            FROM admins
+            WHERE email = 'admin@gmail.com'
         )
-        LIMIT 1;`;
-
-        sqlCon.query(insertAdmin, function(err, results, fields) {
+        LIMIT 1;`, 
+        [
+            "Admin",
+            "0812223333",
+            "admin@gmail.com",
+            "password",
+            currentLocalTime
+        ]
+        , (err, results) => {
             if (err) {
                 console.log(err.message);
             }
@@ -28,142 +37,70 @@ class Seed {
 
     createAllTables() {
         let createTables = 
-        `
-        CREATE TABLE if not exists customers (
-            id INT NOT NULL AUTO_INCREMENT,
-            name VARCHAR(100) NOT NULL,
-            address VARCHAR(100),
-            phone VARCHAR(40),
-            created_at DATETIME,
-            updated_at DATETIME,
-            PRIMARY KEY (id)
-        );
-        
-        CREATE TABLE if not exists hotels (
-            id INT NOT NULL AUTO_INCREMENT,
-            name VARCHAR(100) NOT NULL,
-            address VARCHAR(100),
-            phone VARCHAR(40),
-            created_at DATETIME,
-            updated_at DATETIME,
-            PRIMARY KEY (id)
-        );
-        
-        CREATE TABLE if not exists rooms (
-            id INT NOT NULL AUTO_INCREMENT,
-            number VARCHAR(100) NOT NULL,
-            availability BOOLEAN,
-            type VARCHAR(40),
-            hotel_id INT,
-            created_at DATETIME,
-            updated_at DATETIME,
-            PRIMARY KEY (id),
-            FOREIGN KEY (hotel_id) REFERENCES hotels(id)
-        );
-        
-        CREATE TABLE if not exists employees (
+        `    
+        CREATE TABLE if not exists admins (
             id INT NOT NULL AUTO_INCREMENT,
             name VARCHAR(100),
-            department VARCHAR(100),
-            role VARCHAR(100),
             email VARCHAR(100),
             phone VARCHAR(100),
             password VARCHAR(100),
-            hotel_id INT,
             created_at DATETIME,
             updated_at DATETIME,
-            PRIMARY KEY (id),
-            FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+            PRIMARY KEY (id)
         );
-        
-        CREATE TABLE if not exists salaries (
+
+        CREATE TABLE if not exists users (
             id INT NOT NULL AUTO_INCREMENT,
-            basic_salary DECIMAL(13,2),
-            over_time DECIMAL(13,2),
-            allowance DECIMAL(13,2),
-            leaves DECIMAL(13,2),
-            deduction DECIMAL(13,2),
-            final_amount DECIMAL(13,2),
-            hr_id INT,
-            employee_id INT,
+            name VARCHAR(100),
+            email VARCHAR(100),
+            phone VARCHAR(100),
+            password VARCHAR(100),
             created_at DATETIME,
             updated_at DATETIME,
-            PRIMARY KEY (id),
-            FOREIGN KEY (employee_id) REFERENCES employees(id)
+            PRIMARY KEY (id)
         );
-        
-        CREATE TABLE if not exists attendances (
+
+        CREATE TABLE if not exists drivers (
             id INT NOT NULL AUTO_INCREMENT,
-            entered DATETIME,
-            exited DATETIME,
-            hr_id INT,
-            employee_id INT,
+            name VARCHAR(100),
+            email VARCHAR(100),
+            phone VARCHAR(100),
+            password VARCHAR(100),
+            license_id VARCHAR(100),
+            availability BOOLEAN,
             created_at DATETIME,
             updated_at DATETIME,
-            PRIMARY KEY (id),
-            FOREIGN KEY (employee_id) REFERENCES employees(id)
+            PRIMARY KEY (id)
         );
-        
-        CREATE TABLE if not exists payments (
+
+        CREATE TABLE if not exists vehicles (
             id INT NOT NULL AUTO_INCREMENT,
-            date_checked_in DATETIME,
-            date_checked_out DATETIME,
-            reservation_fee DECIMAL(13,2),
-            hotel_fee DECIMAL(13,2),
-            paid DECIMAL(13,2),
-            due DECIMAL(13,2),
-            completed BOOLEAN,
-            customer_id INT,
-            room_id INT,
+            name VARCHAR(100),
+            type VARCHAR(100),
+            charge_per_meter DECIMAL(13,2),
+            capacity INT,
             created_at DATETIME,
             updated_at DATETIME,
-            PRIMARY KEY (id),
-            FOREIGN KEY (customer_id) REFERENCES customers(id),
-            FOREIGN KEY (room_id) REFERENCES rooms(id)
+            PRIMARY KEY (id)
         );
-        
-        CREATE TABLE if not exists reservations (
+
+        CREATE TABLE if not exists bookings (
             id INT NOT NULL AUTO_INCREMENT,
-            adults_count INT,
-            children_count INT,
-            customer_id INT,
-            room_id INT,
-            checked_out BOOLEAN,
+            start_location VARCHAR(100),
+            end_location VARCHAR(100),
+            distance VARCHAR(100),
+            total_charge DECIMAL(13,2),
+            status VARCHAR(100),
+            duration VARCHAR(100),
+            user_id INT,
+            driver_id INT,
+            vehicle_id INT,
             created_at DATETIME,
             updated_at DATETIME,
             PRIMARY KEY (id),
-            FOREIGN KEY (customer_id) REFERENCES customers(id),
-            FOREIGN KEY (room_id) REFERENCES rooms(id)
-        );
-        
-        CREATE TABLE if not exists finances (
-            id INT NOT NULL AUTO_INCREMENT,
-            income DECIMAL(13,2),
-            expense DECIMAL(13,2),
-            payer VARCHAR(100),
-            receiver VARCHAR(100),          
-            type VARCHAR(40),
-            description VARCHAR(40),
-            recorded_by INT,
-            created_at DATETIME,
-            updated_at DATETIME,
-            PRIMARY KEY (id),
-            FOREIGN KEY (recorded_by) REFERENCES employees(id)
-        );
-        
-        CREATE TABLE if not exists inventories (
-            id INT NOT NULL AUTO_INCREMENT,
-            product VARCHAR(100),
-            quantity INT,
-            price DECIMAL(13,2),
-            seller VARCHAR(100),          
-            department VARCHAR(40),
-            description VARCHAR(40),
-            recorded_by INT,
-            created_at DATETIME,
-            updated_at DATETIME,
-            PRIMARY KEY (id),
-            FOREIGN KEY (recorded_by) REFERENCES employees(id)
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            FOREIGN KEY (driver_id) REFERENCES drivers(id),
+            FOREIGN KEY (vehicle_id) REFERENCES vehicles(id)
         );
         `;
 
