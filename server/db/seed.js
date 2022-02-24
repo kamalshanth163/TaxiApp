@@ -24,7 +24,6 @@ const vehicles = [
 
 class Seed {
 
-
     constructor() {
         this.createAllTables();
         this.insertAdmins();
@@ -61,7 +60,6 @@ class Seed {
     }
 
     insertVehicle(vehicle) {
-        console.log(vehicle);
         var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
         sqlCon.query(
             `INSERT INTO vehicles (name, type, charge_per_meter, capacity, created_at, updated_at)
@@ -141,10 +139,10 @@ class Seed {
             id INT NOT NULL AUTO_INCREMENT,
             start_location VARCHAR(100),
             end_location VARCHAR(100),
-            distance VARCHAR(100),
+            distance DECIMAL(13,2),
             total_charge DECIMAL(13,2),
             status VARCHAR(100),
-            duration VARCHAR(100),
+            duration DECIMAL(13,2),
             user_id INT,
             driver_id INT,
             vehicle_id INT,

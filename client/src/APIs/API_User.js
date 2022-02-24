@@ -68,6 +68,32 @@ class API_User {
             });
         return result;
     }
+
+    async getAllVehicles(){
+        var result =
+            fetch(`${baseUrl}vehicles`)
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
+
+    async postBooking(booking){
+        var result =
+            fetch(`${baseUrl}bookings`,
+            {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(booking)           
+            })
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
+
 }
 
 export default API_User;

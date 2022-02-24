@@ -19,7 +19,6 @@ function Details() {
   useEffect(() => {
     new API_Driver().getAllDrivers().then(data => {
       const driver = data.find(d => d.id.toString() === userId);
-      console.log(">>", driver);
       setDriver(driver);
     })
   }, [driver])
