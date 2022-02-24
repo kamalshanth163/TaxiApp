@@ -22,17 +22,19 @@ const Login = () => {
     e.preventDefault();
     if(userType === "admin"){
       new API_Admin().loginAdmin(userData).then(data => {
-        console.log(data)
+        localStorage.setItem("user-id", data.id);
         history.push('/');
       });
     }
     else if(userType === "user"){
       new API_User().loginUser(userData).then(data => {
+        localStorage.setItem("user-id", data.id);
         history.push('/');
       });
     }
     else if(userType === "driver"){
       new API_Driver().loginDriver(userData).then(data => {
+        localStorage.setItem("user-id", data.id);
         history.push('/');
       });
     }

@@ -29,6 +29,7 @@ const Register = () => {
         password: user.password,
       }
       new API_User().postUser(passenger).then(data => {
+        localStorage.setItem("user-id", data.insertId);
         history.push('/');
       });
     }
@@ -42,6 +43,7 @@ const Register = () => {
         availability: user.availability
       }
       new API_Driver().postDriver(driver).then(data => {
+        localStorage.setItem("user-id", data.insertId);
         history.push('/');
       });
     }

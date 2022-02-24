@@ -3,7 +3,6 @@ var baseUrl = Config.api_url;
 
 class API_Driver {
     async postDriver(driver){
-        console.log(driver)
         var result =
             fetch(`${baseUrl}drivers`,
             {
