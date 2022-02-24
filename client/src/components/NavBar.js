@@ -12,11 +12,8 @@ const NavBar = () => {
                 <tr>
                   <td>
                     <NavLink className="logo" to="/">
-                      <h1 className="main-text">LD</h1>
+                      <h1 className="main-text">TaxiApp</h1>
                     </NavLink>
-                  </td>
-                  <td className="sign-section">
-                      {/* <span className="signin-btn">Login</span> */}
                   </td>
                 </tr>
               </table>

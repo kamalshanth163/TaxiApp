@@ -29,13 +29,13 @@ const Login = () => {
     else if(userType === "user"){
       new API_User().loginUser(userData).then(data => {
         localStorage.setItem("user-id", data.id);
-        history.push('/');
+        history.push('/user-page');
       });
     }
     else if(userType === "driver"){
       new API_Driver().loginDriver(userData).then(data => {
         localStorage.setItem("user-id", data.id);
-        history.push('/');
+        history.push('/driver-page');
       });
     }
   }

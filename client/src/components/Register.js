@@ -30,7 +30,7 @@ const Register = () => {
       }
       new API_User().postUser(passenger).then(data => {
         localStorage.setItem("user-id", data.insertId);
-        history.push('/');
+        history.push('/user-page');
       });
     }
     else if(userType === "driver"){
@@ -44,7 +44,7 @@ const Register = () => {
       }
       new API_Driver().postDriver(driver).then(data => {
         localStorage.setItem("user-id", data.insertId);
-        history.push('/');
+        history.push('/driver-page');
       });
     }
   }
