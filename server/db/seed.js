@@ -1,11 +1,36 @@
 const sqlCon = require("./connection");
 const DateTimeService = require('../services/DateTimeService');
 
+const vehicles = [
+    {
+        name: "Car",
+        type: "Car",
+        charge_per_meter: 1.0,
+        capacity: 4
+    },
+    {
+        name: "Minivan",
+        type: "Minivan",
+        charge_per_meter: 2.0,
+        capacity: 6
+    },
+    {
+        name: "Van",
+        type: "Van",
+        charge_per_meter: 5.0,
+        capacity: 8
+    }
+]
+
 class Seed {
+
 
     constructor() {
         this.createAllTables();
         this.insertAdmins();
+        vehicles.forEach(vehicle => {
+            this.insertVehicle(vehicle);
+        });
     }
 
     insertAdmins() {
@@ -28,6 +53,34 @@ class Seed {
             "password",
             currentLocalTime
         ]
+        , (err, results) => {
+            if (err) {
+                console.log(err.message);
+            }
+        });
+    }
+
+    insertVehicle(vehicle) {
+        console.log(vehicle);
+        var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
+        sqlCon.query(
+            `INSERT INTO vehicles (name, type, charge_per_meter, capacity, created_at, updated_at)
+            SELECT ?,?,?,?,?,?
+            FROM DUAL
+            WHERE NOT EXISTS(
+                SELECT 1
+                FROM vehicles
+                WHERE name = '${vehicle.name}' AND type = '${vehicle.type}'
+            )
+            LIMIT 1;`,
+            [
+                vehicle.name,
+                vehicle.type,
+                vehicle.charge_per_meter,
+                vehicle.capacity,
+                currentLocalTime,
+                currentLocalTime,
+            ]
         , (err, results) => {
             if (err) {
                 console.log(err.message);
