@@ -1,37 +1,37 @@
 const sqlCon = require("../db/connection");
 const DateTimeService = require('../services/DateTimeService');
 
-const getAllRooms = (req, res) => {
-    sqlCon.query("SELECT * FROM rooms", (err, results) => {
+const getAllVehicles = (req, res) => {
+    sqlCon.query("SELECT * FROM vehicles", (err, results) => {
         if(err) return res.sendStatus(400);
         return res.send(results);
     })
 };
 
-const getRoomById = (req, res) => {
-    sqlCon.query(`SELECT * FROM rooms WHERE id = ${req.params.id}`, (err, results) => {
+const getVehicleById = (req, res) => {
+    sqlCon.query(`SELECT * FROM vehicles WHERE id = ${req.params.id}`, (err, results) => {
         if(err) return res.sendStatus(400);
         return res.send(results);
     })
 }
 
-const postRoom = (req, res) => {
+const postVehicle = (req, res) => {
     var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     sqlCon.query(
-        `INSERT INTO rooms (number, availability, type, hotel_id, created_at, updated_at)
+        `INSERT INTO vehicles (name, type, charge_per_meter, capacity, created_at, updated_at)
         SELECT ?,?,?,?,?,?
         FROM DUAL
         WHERE NOT EXISTS(
             SELECT 1
-            FROM rooms
-            WHERE number = '${req.body.number}'
+            FROM vehicles
+            WHERE name = '${req.body.name}' AND type = '${req.body.type}'
         )
         LIMIT 1;`,
         [
-            req.body.number,
-            req.body.availability,
+            req.body.name,
             req.body.type,
-            req.body.hotel_id,
+            req.body.charge_per_meter,
+            req.body.capacity,
             currentLocalTime,
             currentLocalTime,
         ]
@@ -41,30 +41,31 @@ const postRoom = (req, res) => {
     })
 }
 
-const updateRoom = (req, res) => {
+const updateVehicle = (req, res) => {
     var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     var updatedAt = new Date(currentLocalTime).toISOString();
   
     sqlCon.query(
         `
         SET SQL_MODE='ALLOW_INVALID_DATES';
-        UPDATE rooms 
+        UPDATE vehicles 
         SET 
-        number = '${req.body.number}',
-        availability = '${req.body.availability}',
+        name = '${req.body.name}',
         type = '${req.body.type}',
-        hotel_id = '${req.body.hotel_id}',
+        charge_per_meter = '${req.body.charge_per_meter}',
+        capacity = '${req.body.capacity}',
         updated_at = '${updatedAt}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
+        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })
 }
 
-const deleteRoom = (req, res) => {
+const deleteVehicle = (req, res) => {
     sqlCon.query(
-        `DELETE FROM rooms WHERE id = ${req.params.id};`
+        `DELETE FROM vehicles WHERE id = ${req.params.id};`
     , (err, results) => {
         if(err) return res.sendStatus(400);
         return res.send(results); 
@@ -72,10 +73,10 @@ const deleteRoom = (req, res) => {
 }
 
 module.exports = {
-    getAllRooms,
-    getRoomById,
-    postRoom,
-    updateRoom,
-    deleteRoom
+    getAllVehicles,
+    getVehicleById,
+    postVehicle,
+    updateVehicle,
+    deleteVehicle
 };
 
