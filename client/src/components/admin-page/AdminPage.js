@@ -6,7 +6,7 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
-import Employee from './tabs/Employee';
+import Employee from './tabs/Dashboard';
 
 const AdminPage = () => {
   let { path, url } = useRouteMatch();
