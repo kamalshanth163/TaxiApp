@@ -26,18 +26,18 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('clicked ')
-
     if(userType === "admin"){
       new API_Admin().loginAdmin(userData).then(data => {
         localStorage.setItem("user-id", data.id);
         history.push('/admin-page');
+        alert("Admin Logged In Successfully");
       });
     }
     else if(userType === "user"){
       new API_User().loginUser(userData).then(data => {
         localStorage.setItem("user-id", data.id);
         history.push('/user-page');
+        alert("Passenger Logged In Successfully");
       });
     }
     else if(userType === "driver"){
@@ -45,6 +45,7 @@ const Login = () => {
         console.log(data)
         localStorage.setItem("user-id", data.id);
         history.push('/driver-page');
+        alert("Driver Logged In Successfully");
       });
     }
   }
