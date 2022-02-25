@@ -66,7 +66,7 @@ const Register = () => {
           <div class="container">
               <button id="phone-trigger" class="phone-trigger ion-android-call"></button>
               <ul class="phones">
-                  <li><button class="driver-links btn-shape"><p>Login</p></button></li>
+                  <li><button class="driver-links btn-shape"><p>Login</p></button></li> 
                   <li><button class="driver-links btn-shape"><p>Signup</p></button></li>
               </ul>
     <ul class="phones">

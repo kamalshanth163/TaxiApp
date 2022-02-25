@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API_Driver from '../../../APIs/API_Driver';
 import API_User from '../../../APIs/API_User';
-import '../../../App.css'
+import '../../../assets/css/style.css';
 
 function Booking() {
   const userId = localStorage.getItem("user-id");
@@ -81,27 +81,27 @@ function Booking() {
   }
 
   return (
-    <div className="booking-page row">
-      <h1>Booking Page</h1>
+    <div className="booking-page">
+      <h1>Booking Form</h1>
 
-      <form className="form">
+      <form className="booking-form">
 
-           <div className='input'>
+           <div className='input-box'>
               <label for="start_location">Start location</label>
                <input type="text" placeholder="Start location" name="start_location" id="start_location" value={booking.start_location} required onChange={(e)=>handleChange(e)}/>
             </div>
 
-            <div className='input'>
+            <div className='input-box'>
               <label for="end_location">End location</label>
                <input type="text" placeholder="End location" name="end_location" id="end_location" value={booking.end_location} required onChange={(e)=>handleChange(e)}/>
             </div>
 
-            <div className='input'>
+            <div className='input-box'>
               <label for="distance">Distance (meters)</label>
                <input type="number" placeholder="Distance (meters)" name="distance" id="distance" value={booking.distance} required onChange={(e)=>handleChange(e)}/>
             </div>
 
-            <div className='input'>
+            <div className='input-box'>
               <label for="duration">Duration (minutes)</label>
               <input type="number" placeholder="Duration (minutes)" name="duration" id="duration" value={booking.duration} required onChange={(e)=>handleChange(e)}/>
             </div>
@@ -109,7 +109,7 @@ function Booking() {
             {
               vehicles.map(vehicle => {
                 return (
-                  <div className='vehicle-card' onClick={(e) => selectVehicle(vehicle)}>
+                  <div className='selection-card' onClick={(e) => selectVehicle(vehicle)}>
                     <h2>{vehicle.type}</h2>
                     <p>{vehicle.capacity} People</p>
                     <p>LKR {vehicle.charge_per_meter} per meter</p>
@@ -118,7 +118,7 @@ function Booking() {
               })
             }  
 
-            <div className='input select'>
+            <div className='input-box'>
               <label for="vehicle_id">Selected Vehicle</label>
               <select name="vehicle_id" id="vehicle_id" value={booking.vehicle_id} required onChange={(e)=>handleChange(e)}>
                 {
@@ -132,16 +132,16 @@ function Booking() {
             {
               drivers.map(driver => {
                 return (
-                  <div className='driver-card' onClick={(e) => selectDriver(driver)}>
+                  <div className='driver-selection-card' onClick={(e) => selectDriver(driver)}>
                     <h2>{driver.name}</h2>
-                    <p>{driver.license_id}</p>
-                    <p>{driver.phone}</p>
+                    <p>License ID : {driver.license_id}</p>
+                    <p>Mobile Number : {driver.phone}</p>
                   </div>
                 )
               })
             } 
 
-            <div className='input select'>
+            <div className='input-box'>
               <label for="driver_id">Selected Driver</label>
               <select name="driver_id" id="driver_id" value={booking.driver_id} required onChange={(e)=>handleChange(e)}>
                 {
@@ -152,7 +152,7 @@ function Booking() {
               </select>
             </div><br />
 
-            <button disabled={booking.vehicle_id == 0 || booking.distance == 0} type="submit" className="calculateBtn" onClick={(e) => calculateTotalCharge(e)}>Calculate Total Charge</button>
+            <button disabled={booking.vehicle_id == 0 || booking.distance == 0} type="submit" className="form-btn" onClick={(e) => calculateTotalCharge(e)}>Calculate Total Charge</button>
 
             <div>
               <label>Total Charge (LKR)</label>
@@ -160,7 +160,7 @@ function Booking() {
             </div>
 
             <div className='btns'>
-            <button type="submit" className="addBtn" onClick={(e) => handleSubmit(e)}>Book</button>
+            <button type="submit" className="form-book-btn" onClick={(e) => handleSubmit(e)}>Book</button>
             </div>
 
         </form>

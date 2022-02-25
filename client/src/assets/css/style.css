@@ -814,6 +814,35 @@ q footer:before {
   justify-content: center;
 }
 
+.link-flex {
+  display: flex;
+  flex-direction: row;
+  margin: -50px 0 50px 0;
+}
+
+.booking-form {
+  height: auto;
+  width: 800px;
+}
+
+.menu-link {
+  color: #000 !important;
+  height: 50px;
+  width: 200px;
+  background-color: #ffcc00;
+  margin: 50px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+}
+
+.menu-link:hover {
+  color: rgb(255, 255, 255) !important;
+  background-color: #000000;
+}
+
 .flex-box-card .card {
   height: 200px;
   width: 300px;
@@ -982,6 +1011,38 @@ q footer:before {
   margin: 20px 0 0 0;
 }
 
+.booking-form .input-box {
+  height: 100px;
+  width: auto;
+  margin: 20px 0 0 0;
+}
+
+.selection-card {
+  width: 200px;
+  height: 200px;
+  background-color: #ffce00;
+  color: #000;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 30px;
+  text-align: center;
+  padding: 25px 0;
+}
+
+.driver-selection-card {
+  width: 300px;
+  height: 200px;
+  background-color: #ffce00;
+  color: #000;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 30px;
+  text-align: center;
+  padding: 25px 0;
+}
+
 .form-container button {
   width: 500px;
   height: 50px;
@@ -991,6 +1052,40 @@ q footer:before {
   border-radius: 5px;
   margin: 20px 0 20px 0;
   font-weight: 500;
+}
+
+.form-book-btn {
+  width: 500px;
+  height: 50px;
+  font-size: 20px;
+  color: black;
+  background-color: #ffce00;
+  border-radius: 5px;
+  margin: 10px 0 50px 150px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-btn {
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  color: black;
+  background-color: #ffce00;
+  border-radius: 5px;
+  margin: 10px 0 50px 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-btn:hover {
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+}
+
+.no-padding {
+  padding: 0 !important;
+  margin-top: -80px;
 }
 
 .form-container button:hover {
@@ -1923,6 +2018,14 @@ q footer:before {
 
 /* 4.15. Contacts
   -----------------------------------------------------------*/
+
+.no-pad {
+  padding-top: 50px !important;
+}
+
+.logout {
+  margin: 5px;
+}
 
 .contacts {
   text-align: center;
