@@ -88,7 +88,7 @@ function CurrentTrip() {
         </tr>
       </table>
 
-      <button onClick={(e) => completePayment()}>Complete payment</button>
+      <button className='completetripbtn' onClick={(e) => completePayment()}>Complete payment</button>
     </div>
 
   );

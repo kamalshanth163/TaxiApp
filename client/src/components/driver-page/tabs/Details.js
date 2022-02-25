@@ -57,9 +57,9 @@ function Details() {
           {
             driver.availability === 1
             ? 
-            <button onClick={(e) => handleAvailability(0)}>Set as Busy</button>
+            <button className='updatebtn' onClick={(e) => handleAvailability(0)}>Set as Busy</button>
             :
-            <button onClick={(e) => handleAvailability(1)}>Set as Available</button>
+            <button className='updatebtn' onClick={(e) => handleAvailability(1)}>Set as Available</button>
           }
           </td>
         </tr>

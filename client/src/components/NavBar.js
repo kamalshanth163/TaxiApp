@@ -9,6 +9,7 @@ const NavBar = () => {
 
   const handleLogout = (e) => {
     e.preventDefault();
+    console.log('logout')
     localStorage.clear();
     history.push('/');
   }
