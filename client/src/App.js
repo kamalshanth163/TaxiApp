@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import LoginSelection from './components/LoginSelection';
 import AdminPage from './components/admin-page/AdminPage';
 import LoginPage from './components/Login';
+import LoginSelectionPage from './components/LoginSelection';
 import RegisterPage from './components/Register';
 import DriverPage from './components/driver-page/DriverPage';
 import UserPage from './components/user-page/UserPage';
@@ -13,20 +14,21 @@ import UserPage from './components/user-page/UserPage';
 function App() {
   return (
 
-    <LoginSelection />
+    // <LoginSelection />
     // <LoginPage />
+    // <RegisterPage />
 
-      // <Router>
-      //   <NavBar />
-      //   <Switch>
-      //       <Route path="/" exact component = {Home} />
-      //       <Route path="/admin-page" component = {AdminPage} />
-      //       <Route path="/login-page" component = {LoginPage} />
-      //       <Route path="/register-page" component = {RegisterPage} />
-      //       <Route path="/driver-page" component = {DriverPage} />
-      //       <Route path="/user-page" component = {UserPage} />
-      //   </Switch>
-      // </Router>
+
+      <Router>
+         <Switch>
+             <Route path="/" exact component = {LoginSelectionPage} />
+             <Route path="/admin-page" component = {AdminPage} />
+             <Route path="/login-page" component = {LoginPage} />
+             <Route path="/register-page" component = {RegisterPage} />
+             <Route path="/driver-page" component = {DriverPage} />
+             <Route path="/user-page" component = {UserPage} />
+         </Switch>
+       </Router>
 
   );
 }
