@@ -6,7 +6,7 @@ import driver from '../assets/images/driver.png';
 import passanger from '../assets/images/passanger.png';
 import LoginPage from './Login.js';
 
-const LoginSelection = () => {
+const RegisterSelection = () => {
   const history = useHistory();
 
   const handleStart = (userType) => {
@@ -79,7 +79,7 @@ const LoginSelection = () => {
 						<div class="col-sm-12">
 							<div class="title">
 								<h1>Welcome to <br /> City Taxi</h1>
-								<h6>Login As</h6>
+								<h6>Register As</h6>
 							</div>
 							<hr class="blank" />
 						</div>
@@ -180,4 +180,4 @@ const LoginSelection = () => {
   );
 }
 
-export default LoginSelection;
+export default RegisterSelection;

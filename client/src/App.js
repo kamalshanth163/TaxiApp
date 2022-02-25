@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import LoginSelection from './components/LoginSelection';
+import RegisterSelection from './components/RegisterSelection';
 import AdminPage from './components/admin-page/AdminPage';
 import LoginPage from './components/Login';
 import LoginSelectionPage from './components/LoginSelection';
