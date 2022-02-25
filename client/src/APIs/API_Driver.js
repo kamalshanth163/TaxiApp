@@ -68,6 +68,31 @@ class API_Driver {
             });
         return result;
     }
+
+    async getAllBookings(){
+        var result =
+            fetch(`${baseUrl}bookings`)
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
+
+    async updateBooking(booking){
+        var result =
+            fetch(`${baseUrl}bookings`,
+            {
+                method: "PUT",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(booking)           
+            })
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
 }
 
 export default API_Driver;

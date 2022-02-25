@@ -94,6 +94,16 @@ class API_User {
         return result;
     }
 
+    async getAllBookings(){
+        var result =
+            fetch(`${baseUrl}bookings`)
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
+
 }
 
 export default API_User;
