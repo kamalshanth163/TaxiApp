@@ -5,6 +5,7 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
+import { useHistory } from 'react-router';
 import Details from './tabs/Details';
 import CurrentTrip from './tabs/CurrentTrip';
 import CompletedTrips from './tabs/CompletedTrips';
@@ -12,6 +13,15 @@ import logo from '../../assets/images/l.png';
 
 const DriverPage = () => {
   let { path, url } = useRouteMatch();
+
+  const history = useHistory();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    console.log('logout')
+    localStorage.clear();
+    history.push('/');
+  }
 
   return (
 
@@ -22,7 +32,10 @@ const DriverPage = () => {
 
 <div class="container">
   <ul class="phones">
-      <li><button class="driver-links btn-shape logout"><p>Logout</p></button></li> 
+      <li>
+      {/* <button class="driver-links btn-shape logout"><p>Logout</p></button> */}
+      <button className='driver-links btn-shape logout' onClick={(e) => handleLogout(e)}><p>Logout</p></button>
+      </li> 
   </ul>
 </div>
 </div>

@@ -25,6 +25,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log('clicked ')
+
     if(userType === "admin"){
       new API_Admin().loginAdmin(userData).then(data => {
         localStorage.setItem("user-id", data.id);
@@ -39,6 +42,7 @@ const Login = () => {
     }
     else if(userType === "driver"){
       new API_Driver().loginDriver(userData).then(data => {
+        console.log(data)
         localStorage.setItem("user-id", data.id);
         history.push('/driver-page');
       });

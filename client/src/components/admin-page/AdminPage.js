@@ -6,10 +6,19 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
+import { useHistory } from 'react-router';
 import Dashboard from './tabs/Dashboard';
 
 const AdminPage = () => {
   let { path, url } = useRouteMatch();
+  const history = useHistory();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    console.log('logout')
+    localStorage.clear();
+    history.push('/');
+  }
 
   return (
 
@@ -21,7 +30,7 @@ const AdminPage = () => {
   
   <div class="container">
       <ul class="phones">
-          <li><button class="driver-links btn-shape logout"><p>Logout</p></button></li> 
+          <li><button class="driver-links btn-shape logout" onClick={(e) => handleLogout(e)}><p>Logout</p></button></li> 
       </ul>
   </div>
 </div>
