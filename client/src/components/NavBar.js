@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
+import { useHistory } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+
+  const history = useHistory();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    history.push('/');
+  }
 
   return (
     <div>
@@ -11,9 +20,18 @@ const NavBar = () => {
               <table>
                 <tr>
                   <td>
-                    <NavLink className="logo" to="/">
+                    <NavLink className="logo nav-link" to="/">
                       <h1 className="main-text">TaxiApp</h1>
                     </NavLink>
+                    
+                    <NavLink className="nav-link" to="/">
+                      <button className='home-btn btn'>Home</button>
+                    </NavLink>
+
+                    <NavLink className="nav-link" to="/">
+                      <button className='logout-btn btn' onClick={(e) => handleLogout(e)}>Logout</button>
+                    </NavLink>
+                    
                   </td>
                 </tr>
               </table>

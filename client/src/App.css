@@ -2,6 +2,7 @@
   background-color: #222;
   overflow: hidden;
   height: 100%;
+  padding: 30px;
 }
 .navlinks{
   width: 100%;
@@ -100,3 +101,44 @@ cursor: pointer;
   margin: 10px;
 }
 
+.admin-page-dashboard .data-card{
+  background: rgb(26, 26, 26);
+  color: rgb(255, 255, 255);
+  width: 200px;
+  height: auto;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+}
+
+.admin-page-dashboard .data-card span{
+  font-size: 50px;
+  color: yellow;
+}
+
+.logout-btn {
+  background: orangered;
+  color: white;
+  margin: 20px;
+}
+
+.home-btn{
+  background: white;
+  color: black;
+  margin: 20px;
+
+}
+
+.btn{
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.nav-link{
+  display: inline-block;
+}
