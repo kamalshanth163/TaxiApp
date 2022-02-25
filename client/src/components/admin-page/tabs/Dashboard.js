@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import API_Driver from '../../../APIs/API_Driver';
 import API_User from '../../../APIs/API_User';
-import '../../../App.css'
 
 function Dashboard() {
 
@@ -23,23 +22,23 @@ function Dashboard() {
 
   return (
     <div className="admin-page-dashboard row">
-      <h1>Admin Dashboard</h1>
+      <h2>Dashboard</h2>
 
       <div>
-        <div className='data-card'>
-          <h1>Users</h1>
+        <div className='dash-card'>
+          <h3>Users</h3>
           <span>{users.length}</span>
         </div>
-        <div className='data-card'>
-          <h1>Drivers</h1>
+        <div className='dash-card'>
+          <h3>Drivers</h3>
           <span>{drivers.length}</span>
         </div>
-        <div className='data-card'>
-          <h1>Vehicles</h1>
+        <div className='dash-card'>
+          <h3>Vehicles</h3>
           <span>{vehicles.length}</span>
         </div>
-        <div className='data-card'>
-          <h1>Bookings</h1>
+        <div className='dash-card'>
+          <h3>Bookings</h3>
           <span>{bookings.length}</span>
         </div>
       </div>
