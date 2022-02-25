@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import API_Driver from '../../../APIs/API_Driver';
-import '../../styles/AdminPage.css'
+import '../../../App.css'
 
 function Details() {
 
@@ -19,7 +19,6 @@ function Details() {
   useEffect(() => {
     new API_Driver().getAllDrivers().then(data => {
       const driver = data.find(d => d.id.toString() === userId);
-      console.log(">>", driver);
       setDriver(driver);
     })
   }, [driver])

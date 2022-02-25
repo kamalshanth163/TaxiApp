@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/AdminPage.css'
+import '../../../App.css'
 import DateTimeService from '../../../services/DateTimeService';
 
 function DriverTrips() {

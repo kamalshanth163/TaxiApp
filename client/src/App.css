@@ -76,3 +76,27 @@ cursor: pointer;
   opacity: .5;
   cursor: not-allowed !important;
 }
+
+.booking-page .vehicle-card{
+  background: yellow;
+  width: 200px;
+  height: auto;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.booking-page .driver-card{
+  background: rgb(48, 48, 48);
+  color: white;
+  width: 200px;
+  height: auto;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px;
+}
+
