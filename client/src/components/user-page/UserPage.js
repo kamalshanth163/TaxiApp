@@ -79,13 +79,15 @@ const UserPage = () => {
 </div>
 
 
-
-        <Switch>
+<div className='switchcontainer'>
+<Switch>
           <Route path={`${path}`} exact component = {Booking} />
           <Route path={`${path}/booking`} component = {Booking} />
           <Route path={`${path}/user-current-trip`} component = {CurrentTrip} />
           <Route path={`${path}/user-completed-trips`} component = {CompletedTrips} /> 
         </Switch>
+</div>
+
 
       
     </div>

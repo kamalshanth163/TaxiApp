@@ -36,7 +36,7 @@ function CurrentTrip() {
 
   return (
     <div className="user-current-trip-page row">
-      <h1>Current Trip Page</h1>
+      <h2>Current Trip</h2>
 
       <table>
         <tr>

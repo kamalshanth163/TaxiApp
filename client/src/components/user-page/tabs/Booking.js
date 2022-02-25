@@ -82,7 +82,7 @@ function Booking() {
 
   return (
     <div className="booking-page">
-      <h1>Booking Form</h1>
+      <h2>Booking Form</h2>
 
       <form className="booking-form">
 
