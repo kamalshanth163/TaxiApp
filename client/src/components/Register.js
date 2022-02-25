@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/Home.css';
+import '../App.css';
 import { useHistory } from 'react-router';
 import API_User from '../APIs/API_User';
 import API_Driver from '../APIs/API_Driver';

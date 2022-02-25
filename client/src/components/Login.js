@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import './styles/Home.css';
+import '../App.css';
 import API_Admin from '../APIs/API_Admin';
 import API_User from '../APIs/API_User';
 import API_Driver from '../APIs/API_Driver';

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/AdminPage.css'
+import '../../App.css'
 import {
   Switch,
   Route,

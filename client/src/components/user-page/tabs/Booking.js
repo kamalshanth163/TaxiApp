@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API_Driver from '../../../APIs/API_Driver';
 import API_User from '../../../APIs/API_User';
-import '../../styles/AdminPage.css'
+import '../../../App.css'
 
 function Booking() {
   const userId = localStorage.getItem("user-id");
@@ -67,6 +67,16 @@ function Booking() {
     setTotalCharge(vehicle.charge_per_meter * booking.distance);
   }
 
+  const selectVehicle = (vehicle) => {
+    console.log(vehicle.type);
+    setBooking({...booking, vehicle_id: vehicle.id});
+  }
+
+  const selectDriver = (driver) => {
+    console.log(driver.name);
+    setBooking({...booking, driver_id: driver.id});
+  }
+
   return (
     <div className="booking-page row">
       <h1>Booking Page</h1>
@@ -93,8 +103,20 @@ function Booking() {
               <input type="number" placeholder="Duration (minutes)" name="duration" id="duration" value={booking.duration} required onChange={(e)=>handleChange(e)}/>
             </div>
 
+            {
+              vehicles.map(vehicle => {
+                return (
+                  <div className='vehicle-card' onClick={(e) => selectVehicle(vehicle)}>
+                    <h2>{vehicle.type}</h2>
+                    <p>{vehicle.capacity} People</p>
+                    <p>LKR {vehicle.charge_per_meter} per meter</p>
+                  </div>
+                )
+              })
+            }  
+
             <div className='input select'>
-              <label for="vehicle_id">Select a Vehicle</label>
+              <label for="vehicle_id">Selected Vehicle</label>
               <select name="vehicle_id" id="vehicle_id" value={booking.vehicle_id} required onChange={(e)=>handleChange(e)}>
                 {
                   vehicles.map(vehicle => {
@@ -103,9 +125,21 @@ function Booking() {
                 }  
               </select>
             </div>
+            
+            {
+              drivers.map(driver => {
+                return (
+                  <div className='driver-card' onClick={(e) => selectDriver(driver)}>
+                    <h2>{driver.name}</h2>
+                    <p>{driver.license_id}</p>
+                    <p>{driver.phone}</p>
+                  </div>
+                )
+              })
+            } 
 
             <div className='input select'>
-              <label for="driver_id">Select a Driver</label>
+              <label for="driver_id">Selected Driver</label>
               <select name="driver_id" id="driver_id" value={booking.driver_id} required onChange={(e)=>handleChange(e)}>
                 {
                   drivers.map(driver => {

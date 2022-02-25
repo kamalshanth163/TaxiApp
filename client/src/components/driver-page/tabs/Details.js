@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import API_Driver from '../../../APIs/API_Driver';
-import '../../styles/AdminPage.css'
+import '../../../App.css'
 
 function Details() {
 
