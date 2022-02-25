@@ -23,7 +23,7 @@ const Login = () => {
     if(userType === "admin"){
       new API_Admin().loginAdmin(userData).then(data => {
         localStorage.setItem("user-id", data.id);
-        history.push('/');
+        history.push('/admin-page');
       });
     }
     else if(userType === "user"){
@@ -49,7 +49,7 @@ const Login = () => {
       <h3 className="back-btn" onClick={(e) => history.push('/')}>Back to Home</h3>
       <form>
         <div class="container">
-          <h1>Login</h1>
+          <h1>Login as {userType}</h1>
           <p>Fill this form & login to your account.</p>
           <hr />
 
