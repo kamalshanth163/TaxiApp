@@ -43,6 +43,9 @@ function Booking() {
     new API_Driver().updateDriver(driver).then(data => {
       console.log(data);
     })
+
+    localStorage.setItem("driver-id", booking.driver_id);
+    localStorage.setItem("vehicle-id", booking.vehicle_id);
   }
     
   const handleChange = (e) => {

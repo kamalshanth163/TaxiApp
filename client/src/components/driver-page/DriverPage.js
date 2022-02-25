@@ -7,7 +7,8 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import Details from './tabs/Details';
-import DriverTrips from './tabs/DriverTrips';
+import CurrentTrip from './tabs/CurrentTrip';
+import CompletedTrips from './tabs/CompletedTrips';
 
 const DriverPage = () => {
   let { path, url } = useRouteMatch();
@@ -25,7 +26,11 @@ const DriverPage = () => {
               <Link className="menu-link" to={`${url}/details`}>Details</Link>
             </td>
             <td>
-              <Link className="menu-link" to={`${url}/driver-trips`}>Trips</Link>
+              <Link className="menu-link" to={`${url}/driver-current-trip`}>Current Trip</Link>
+            </td>
+            
+            <td>
+              <Link className="menu-link" to={`${url}/driver-completed-trips`}>Completed Trips</Link>
             </td>
           </tr>
         </table>
@@ -33,7 +38,8 @@ const DriverPage = () => {
         <Switch>
           <Route path={`${path}`} exact component = {Details} />
           <Route path={`${path}/details`} component = {Details} />
-          <Route path={`${path}/driver-trips`} component = {DriverTrips} />
+          <Route path={`${path}/driver-current-trip`} component = {CurrentTrip} />
+          <Route path={`${path}/driver-completed-trips`} component = {CompletedTrips} />
         </Switch>
 
       </div>

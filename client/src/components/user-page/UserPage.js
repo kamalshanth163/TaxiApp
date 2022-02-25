@@ -7,7 +7,8 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import Booking from './tabs/Booking';
-import UserTrips from './tabs/UserTrips';
+import CurrentTrip from './tabs/CurrentTrip';
+import CompletedTrips from './tabs/CompletedTrips';
 
 const UserPage = () => {
   let { path, url } = useRouteMatch();
@@ -25,7 +26,11 @@ const UserPage = () => {
               <Link className="menu-link" to={`${url}/booking`}>Booking</Link>
             </td>
             <td>
-              <Link className="menu-link" to={`${url}/user-trips`}>Trips</Link>
+              <Link className="menu-link" to={`${url}/user-current-trip`}>Current Trip</Link>
+            </td>
+            
+            <td>
+              <Link className="menu-link" to={`${url}/user-completed-trips`}>Completed Trips</Link>
             </td>
           </tr>
         </table>
@@ -33,7 +38,8 @@ const UserPage = () => {
         <Switch>
           <Route path={`${path}`} exact component = {Booking} />
           <Route path={`${path}/booking`} component = {Booking} />
-          <Route path={`${path}/user-trips`} component = {UserTrips} />
+          <Route path={`${path}/user-current-trip`} component = {CurrentTrip} />
+          <Route path={`${path}/user-completed-trips`} component = {CompletedTrips} />
         </Switch>
 
       </div>
