@@ -865,7 +865,7 @@ q footer:before {
 
 .booking-form {
   height: auto;
-  width: 800px;
+  /* width: 800px; */
 }
 
 .menu-link {
@@ -1296,8 +1296,8 @@ q footer:before {
 
 .centerit {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .service i {
