@@ -13,7 +13,8 @@ function CompletedTrips() {
   useEffect(() => {
     new API_User().getAllBookings().then(data => {
       console.log(data);
-      var completedTrips = data.filter(i => i.user_id.toString() === userId && i.status === "Completed");
+      var completedTrips = data.filter(i => 
+        i.user_id.toString() === userId && i.status === "Completed");
       console.log(completedTrips)
       setBookings([...completedTrips]);
     })

@@ -100,17 +100,6 @@ class Seed {
             PRIMARY KEY (id)
         );
 
-        CREATE TABLE if not exists users (
-            id INT NOT NULL AUTO_INCREMENT,
-            name VARCHAR(100),
-            email VARCHAR(100),
-            phone VARCHAR(100),
-            password VARCHAR(100),
-            created_at DATETIME,
-            updated_at DATETIME,
-            PRIMARY KEY (id)
-        );
-
         CREATE TABLE if not exists drivers (
             id INT NOT NULL AUTO_INCREMENT,
             name VARCHAR(100),
@@ -130,6 +119,18 @@ class Seed {
             type VARCHAR(100),
             charge_per_meter DECIMAL(13,2),
             capacity INT,
+            created_at DATETIME,
+            updated_at DATETIME,
+            PRIMARY KEY (id)
+        );
+
+        
+        CREATE TABLE if not exists users (
+            id INT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(100),
+            email VARCHAR(100),
+            phone VARCHAR(100),
+            password VARCHAR(100),
             created_at DATETIME,
             updated_at DATETIME,
             PRIMARY KEY (id)

@@ -30,7 +30,7 @@ function App() {
              <Route path="/admin-page" component = {AdminPage} />
              <Route path="/login-page" component = {LoginPage} />
              <Route path="/register-page" component = {RegisterPage} />
-             <Route path="/driver-profile-page" component = {DriverPage} />
+             <Route path="/driver-page" component = {DriverPage} />
              <Route path="/user-page" component = {UserPage} />
              <Route path="/about-us" component = {about} />
              <Route path="/contact" component = {contact} />

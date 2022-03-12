@@ -35,6 +35,7 @@ function Booking() {
     booking.status = "Pending";
     booking.total_charge = totalCharge;
     new API_User().postBooking(booking).then(data => {
+      console.log(data);
       alert("Trip booked successfully");
     })
 

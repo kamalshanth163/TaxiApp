@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import API_Driver from '../../../APIs/API_Driver';
 import API_User from '../../../APIs/API_User';
 import '../../../App.css'
 
@@ -21,6 +22,7 @@ function CurrentTrip() {
   }
   
   const [trip, setTrip] = useState(initialTrip);
+  const [driver, setDriver] = useState({});
 
   useEffect(() => {
     new API_User().getAllBookings().then(data => {
@@ -30,6 +32,15 @@ function CurrentTrip() {
         i.driver_id.toString() === driverId && 
         i.vehicle_id.toString() === vehicleId);
       setTrip({...currentTrip});
+
+      if(currentTrip !== undefined){
+        new API_Driver().getAllDrivers().then(data => {
+          console.log(data);
+          var driver = data.find(i => i.id.toString() === currentTrip.driver_id.toString());
+          console.log(driver);
+          setDriver({...driver});
+        })
+      }
     })
   }, [])
 
@@ -37,6 +48,8 @@ function CurrentTrip() {
   return (
     <div className="user-current-trip-page row">
       <h2>Current Trip</h2>
+
+      <h5>Driver: {driver.name}</h5>
 
       <table>
         <tr>

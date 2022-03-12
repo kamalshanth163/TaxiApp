@@ -52,14 +52,16 @@ function Details() {
           <td>{driver.license_id}</td>
         </tr>
         <tr>
-          <td>Availability (Currently { driver.availability === 1 ? "Available" : "Busy"})</td>
+          <td>Availability 
+          {/* (Currently { driver.availability === 1 ? "Available" : "Busy"}) */}
+          </td>
           <td>
           {
             driver.availability === 1
             ? 
-            <button className='updatebtn' onClick={(e) => handleAvailability(0)}>Set as Busy</button>
+            <button className='updatebtn' onClick={(e) => handleAvailability(0)}>Available</button>
             :
-            <button className='updatebtn' onClick={(e) => handleAvailability(1)}>Set as Available</button>
+            <button className='updatebtn' onClick={(e) => handleAvailability(1)}>Busy</button>
           }
           </td>
         </tr>
