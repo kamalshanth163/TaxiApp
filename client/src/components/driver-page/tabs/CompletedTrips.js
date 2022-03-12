@@ -20,7 +20,7 @@ function CompletedTrips() {
   }, [])
   return (
     <div className="user-completed-trips-page row">
-      <h1>Completed Trips Page</h1>
+      <h2>Completed Trips</h2>
       <table>
         <tr>
           <th>Start</th>

@@ -188,7 +188,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.25em;
+  font-size: 2.25em !important;
   line-height: 1.1em;
 }
 
@@ -244,6 +244,26 @@ a:visited {
 }
 
 a:hover {
+  color: #e6b900;
+}
+
+.user-completed-trips-page {
+  width: 800px;
+}
+
+.driver-details-page {
+  width: 800px;
+}
+
+.user-current-trip-page {
+  width: 800px;
+}
+
+.user-current-trip-page h2 {
+  font-size: 2.25em !important;
+}
+
+.footer a {
   color: #e6b900;
 }
 
@@ -2070,7 +2090,7 @@ q footer:before {
   width: 150px;
   color: rgb(0, 0, 0);
   border-radius: 5px;
-  margin-left: 120px;
+  margin-left: 300px;
 }
 
 .completetripbtn:hover {

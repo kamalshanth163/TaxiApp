@@ -32,15 +32,7 @@ class API_User {
         return result;
     }
 
-    async getAllUsers(){
-        var result =
-            fetch(`${baseUrl}users`)
-            .then((response) => response.json())
-            .then((a) => {
-                return a;
-            });
-        return result;
-    }
+
 
     async deleteUser(userId){
         var result =
@@ -69,15 +61,7 @@ class API_User {
         return result;
     }
 
-    async getAllVehicles(){
-        var result =
-            fetch(`${baseUrl}vehicles`)
-            .then((response) => response.json())
-            .then((a) => {
-                return a;
-            });
-        return result;
-    }
+
 
     async postBooking(booking){
         var result =
@@ -94,9 +78,29 @@ class API_User {
         return result;
     }
 
+    async getAllVehicles(){
+        var result =
+            fetch(`${baseUrl}vehicles`)
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
+
     async getAllBookings(){
         var result =
             fetch(`${baseUrl}bookings`)
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
+
+    async getAllUsers(){
+        var result =
+            fetch(`${baseUrl}users`)
             .then((response) => response.json())
             .then((a) => {
                 return a;

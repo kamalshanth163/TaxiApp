@@ -32,7 +32,7 @@ function Details() {
 
   return (
     <div className="driver-details-page row">
-      <h1>Driver Details Page</h1>
+      <h2>Your Details as a Driver</h2>
 
       <table>
         <tr>
